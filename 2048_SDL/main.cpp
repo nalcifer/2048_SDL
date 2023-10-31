@@ -3,14 +3,16 @@
 #include "box.h"
 #include "game.h"
 #include "window.h"
+#include "gameobject.h"
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
     Window* window = new Window();
+    GameObject* gameObject = new GameObject(10, 10, 100, 100);
     srand(time(NULL)); 
-    gameLoop();
+    //gameLoop();
     return 0;
 }
 

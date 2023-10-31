@@ -42,6 +42,9 @@ void gameLoop()
             }
         }
 
+        //DRAW
+
+
 	} while (is_finish == false);
 
     std::cout << "finish";
