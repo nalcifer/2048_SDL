@@ -2,11 +2,13 @@
 #include "grid.h"
 #include "box.h"
 #include "game.h"
+#include "window.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
+    Window* window = new Window();
     srand(time(NULL)); 
     gameLoop();
     return 0;
