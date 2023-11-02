@@ -18,8 +18,7 @@ Window::Window() {
 	
 	// Construction window
 	pWindow = SDL_CreateWindow("2048 (Taylor's Version)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
-	if (pWindow == NULL)
-	{
+	if (pWindow == NULL){
 		std::cout << "Erreur SDL_CreateWindow :" << SDL_GetError();
 		exit(1);
 	}
@@ -27,7 +26,8 @@ Window::Window() {
 	// Construction renderer
 	pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
 	if (pRenderer == nullptr) {
-			std::cerr << "Échec de création du rendu : " << SDL_GetError() << std::endl;
+		std::cerr << "Échec de création du rendu : " << SDL_GetError() << std::endl;
+		exit(1);
 	}
 
 	
