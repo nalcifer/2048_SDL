@@ -4,9 +4,9 @@ class Window
 {
 
 public :
-	SDL_Surface* winSurface = NULL;
-	SDL_Window* window = NULL;
-	SDL_Renderer* renderer = NULL;
+	SDL_Surface* pWinSurface = NULL;
+	SDL_Window* pWindow = NULL;
+	SDL_Renderer* pRenderer = NULL;
 	Window();
 	~Window();
 

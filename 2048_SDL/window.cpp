@@ -7,27 +7,35 @@ using namespace std;
 
 Window::Window() {
 
-	SDL_Surface* winSurface = NULL;
-	SDL_Window* window = NULL;
+	SDL_Surface* pWinSurface = NULL;
+	SDL_Window* pWindow = NULL;
 
+	// Init SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
 		cout << "Error initializing SDL: " << SDL_GetError() << endl;
-		system("pause");
+		exit(1);
 	}
 	
-	window = SDL_CreateWindow("2048 (Taylor's Version)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+	// Construction window
+	pWindow = SDL_CreateWindow("2048 (Taylor's Version)", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+	if (pWindow == NULL)
+	{
+		std::cout << "Erreur SDL_CreateWindow :" << SDL_GetError();
+		exit(1);
+	}
 
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	if (renderer == nullptr) {
+	// Construction renderer
+	pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
+	if (pRenderer == nullptr) {
 			std::cerr << "Échec de création du rendu : " << SDL_GetError() << std::endl;
 	}
 
 	
-	winSurface = SDL_GetWindowSurface(window);
+	pWinSurface = SDL_GetWindowSurface(pWindow);
 
-	SDL_FillRect(winSurface, NULL, SDL_MapRGB(winSurface->format, 100, 25, 200));
+	SDL_FillRect(pWinSurface, NULL, SDL_MapRGB(pWinSurface->format, 100, 25, 200));
 
-	SDL_UpdateWindowSurface(window);
+	SDL_UpdateWindowSurface(pWindow);
 
 	system("pause");
 
@@ -35,8 +43,8 @@ Window::Window() {
 }
 
 Window::~Window() {
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
+	SDL_DestroyRenderer(pRenderer);
+	SDL_DestroyWindow(pWindow);
 
 	SDL_Quit();
 }
