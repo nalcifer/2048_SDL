@@ -1,12 +1,5 @@
-#include <conio.h>
-#include "input.h"
-
-
-#define KEY_UP 72
-#define KEY_DOWN 80
-#define KEY_LEFT 75
-#define KEY_RIGHT 77
-
+#include <SDL.h>
+#include <iostream>
 
 enum Description {
     Up,
@@ -15,30 +8,37 @@ enum Description {
     Left
 };
 
-
+/***
+* METHOD
+*
+* returning value relative to the player's keyboard input
+*/
 Description directionnalArrowInput()
 {
-    bool badKey = true;
-    while (badKey)
+    SDL_Event event;
+    bool keyPressed = false;
+
+    while (!keyPressed)
     {
-        badKey = false;
-        int c = 0;
-        switch ((c = _getch()))
+        SDL_PollEvent(&event);
+        switch (event.type)
         {
-        case KEY_UP:
-            return Up;
-            break;
-        case KEY_DOWN:
-            return Down;
-            break;
-        case KEY_RIGHT:
-            return Right;
-            break;
-        case KEY_LEFT:
-            return Left;
-            break;
-        default:
-            badKey = true;
+        case SDL_KEYDOWN:
+            switch (event.key.keysym.sym)
+            {
+            case SDLK_UP:
+                std::cout << "up";
+                return Up;
+            case SDLK_DOWN:
+                std::cout << "down";
+                return Down;
+            case SDLK_RIGHT:
+                std::cout << "right";
+                return Right;
+            case SDLK_LEFT:
+                std::cout << "left";
+                return Left;
+            }
             break;
         }
     }

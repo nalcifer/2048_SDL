@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "grid.h"
 #include "box.h"
 #include "game.h"
@@ -7,12 +8,20 @@
 
 using namespace std;
 
+/***
+* MAIN
+* 
+* initialization Window and Running game loop
+* destruction game loop when game is finish
+*/
 int main(int argc, char** argv)
 {
-    Window* window = new Window();
-    GameObject* gameObject = new GameObject(10, 10, 100, 100);
+    Window* pWindow = new Window();
+    
     srand(time(NULL)); 
-    //gameLoop();
+    gameLoop(pWindow);
+
+    pWindow->~Window();
     return 0;
 }
 

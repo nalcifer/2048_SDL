@@ -5,10 +5,17 @@
 
 using namespace std;
 
+
+/***
+* CONSTRUCTOR
+* 
+* Creation Window and Renderer
+*/
 Window::Window() {
 
-	SDL_Surface* pWinSurface = NULL;
-	SDL_Window* pWindow = NULL;
+	pWinSurface = NULL;
+	pWindow = NULL;
+	pRenderer = NULL;
 
 	// Init SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -37,11 +44,25 @@ Window::Window() {
 
 	SDL_UpdateWindowSurface(pWindow);
 
-	system("pause");
-
-	
 }
 
+
+/***
+* METHOD 
+* 
+* To update the canva
+*/
+void Window::Update() {
+
+	SDL_RenderPresent(pRenderer);
+
+}
+
+
+
+/***
+* DESTRUCTOR
+*/
 Window::~Window() {
 	SDL_DestroyRenderer(pRenderer);
 	SDL_DestroyWindow(pWindow);

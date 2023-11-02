@@ -1,4 +1,5 @@
 #include <vector>
+#include <SDL.h>
 
 class Box;
 
@@ -19,7 +20,7 @@ public:
 	Grid();
 	//Grid(int _tab[4][4]);
 
-	void display();
+	void display(SDL_Renderer* pRenderer);
 	int randomNum(int offset, int range);
 	void addBox();
 	void debut();

@@ -1,4 +1,4 @@
-class Box
+class Box 
 {
 public:
 	int value;

@@ -1,18 +1,20 @@
 #include "grid.h"
 #include "box.h"
 #include "input.h"
+#include "gameobject.h"
+#include "window.h"
 
 #include <iostream>
-#include <chrono>
-#include <thread>
-#include <algorithm>
-#include <iterator>
+#include <SDL.h>
+
 
 using namespace std;
 
-using namespace std::this_thread;
-using namespace std::chrono;
-
+/***
+* TEMPLATE
+* 
+* used to remove an element from a vector
+*/
 template <typename T>
 void remove(std::vector<T>& v, size_t index) {
     v.erase(v.begin() + index);
@@ -25,6 +27,7 @@ Grid::Grid()
     k = 0;
     x = 0;
     y = 0;
+
     moved = false;
 
     for (int m = 0; m < 4; m++)
@@ -62,44 +65,22 @@ Grid::Grid()
 //    }
 //}
 
-void Grid::display()
+void Grid::display(SDL_Renderer* pRenderer)
 {
-    system("cls");
-
     for (i = 0; i < 5; i++) {
-
-        for (k = 0; k < 4; k++) {
-            cout << " ----";
-            if (k == 3)
-                cout << endl;
-        }
-
         if (i < 4) {
             for (j = 0; j < 4; j++) {
-                cout << "|";
-
-
-                if (tab[i][j]->getValue() < 1000)
-                    cout << " ";
-
-                if (tab[i][j]->getValue() < 10)
-                    cout << " ";
-
-                cout << tab[i][j]->getValue();
-
-                if (tab[i][j]->getValue() < 100)
-                    cout << " ";
-
-                if (j == 3)
-                    cout << "|" << endl;
-
+                int collisions;
+                if (tab[i][j]->getValue() != 0)
+                    collisions = static_cast<int>(std::log2(tab[i][j]->getValue()));
+                else
+                    collisions = 0;
+                GameObject* pGameObject = new GameObject(j * 175 ,i * 175, 150, 150, pRenderer);
+                pGameObject->DrawImg(pRenderer, pGameObject->albums[collisions]);
             }
         }
     }
 
-    /*cout << endl << endl << endl << endl << endl;
-
-
     for (i = 0; i < 5; i++) {
 
         for (k = 0; k < 4; k++) {
@@ -113,14 +94,14 @@ void Grid::display()
 
 
 
-                cout << "|  " << tab[i][j]->getEmpty() << " ";
+                cout << "|  " << tab[i][j]->getValue() << " ";
                 if (j == 3)
                     cout << "|" << endl;
 
 
             }
         }
-    }*/
+    }
 
 }
 

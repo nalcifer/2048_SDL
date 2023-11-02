@@ -2,28 +2,35 @@
 #include <thread>
 #include <chrono>
 #include <vector>
+#include <SDL.h>
 
 #include "grid.h"
+#include "window.h"
+
 #include "box.h"
 #include "input.h"
-
-
 #include "game.h"
 
-void gameLoop()
+void gameLoop(Window* pWindow)
 {
 	bool is_finish = false;
 
     Grid* pgrid = new Grid();
 
     pgrid->debut();
-    pgrid->display();
+    pgrid->display(pWindow->pRenderer);
+
+    pWindow->Update();
 
 	do
 	{
         pgrid->movement();
         pgrid->addBox();
-        pgrid->display();
+
+
+        SDL_RenderClear(pWindow->pRenderer);
+        pgrid->display(pWindow->pRenderer);
+        pWindow->Update();
 
         if (pgrid->canMove() == false)
         {
@@ -31,10 +38,11 @@ void gameLoop()
             {
                 delete pgrid;
 
-                Grid* pgrid = new Grid();
 
                 pgrid->debut();
-                pgrid->display();
+
+                SDL_RenderClear(pWindow->pRenderer);
+                pgrid->display(pWindow->pRenderer);
             }
             else {
                 is_finish = true;
@@ -42,12 +50,12 @@ void gameLoop()
             }
         }
 
-        //DRAW
-
-
 	} while (is_finish == false);
 
     std::cout << "finish";
+
+
+    //system("pause");
 
     delete pgrid;
 }
