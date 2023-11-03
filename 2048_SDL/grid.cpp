@@ -19,6 +19,9 @@ void remove(std::vector<T>& v, size_t index) {
     v.erase(v.begin() + index);
 }
 
+// OPTIMISATION POSSIBLE -> NE PAS LAISSER i, j, k, x, y EN VARIABLE PUBLIC ( GET, SET )
+
+
 /***
 * CONSTRUCTOR
 * 
@@ -48,6 +51,8 @@ Grid::Grid()
         }
     }
 }
+
+// OPTIMISATION POSSIBLE -> UTILISER LES VRAIS DIMENSIONS DE LA WINDOW ( PROBLEME LORS DE L'UTILISATION DE LA WINDOW EN PARAMETRE EN DISPLAY)
 
 /***
 * METHOD
@@ -204,6 +209,12 @@ void Grid::clearTab()
         }
     }
 }
+
+
+
+// OPTIMISATION POSSIBLE -> REGROUPER TOUS LES MOVE DANS UNE SEULE FONCTION 
+//                       -> setEmpty ET setValue raccourcie
+
 
 /***
 * METHOD
