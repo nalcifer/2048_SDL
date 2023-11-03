@@ -1,10 +1,22 @@
 #include <iostream>
 #include <SDL.h>
+
 #include "gameobject.h"
 #include "window.h"
 
 using namespace std;
 
+/***
+* CONSTRUCTOR
+*   GameObject
+*       _x          -> position in x
+*       _y          -> position in y
+*       _height     -> height of the object
+*       _widht      -> width of the object
+*       pRenderer   -> canva of the window
+* 
+* load variables and all textures
+*/
 GameObject::GameObject(int _x, int _y, int _height, int _width, SDL_Renderer* pRenderer) {
 	x = _x;
 	y = _y; 
@@ -17,15 +29,12 @@ GameObject::GameObject(int _x, int _y, int _height, int _width, SDL_Renderer* pR
     LoadAllTexture(pRenderer);
 }
 
-//void GameObject::draw(SDL_Renderer* pRenderer) 
-//{
-//	SDL_SetRenderDrawColor(pRenderer, 255, 0, 0, 255);
-//	SDL_Rect rect = { x, y, height, width };
-//	SDL_RenderDrawRect(pRenderer, &rect);
-//}
 
-
-
+/***
+* METHOD
+*   loadAllTexture
+*       pRenderer       -> canva of the window
+*/
 void GameObject::LoadAllTexture(SDL_Renderer* pRenderer)
 {
     for (int i = 0; i < 9; i++) {
@@ -33,6 +42,14 @@ void GameObject::LoadAllTexture(SDL_Renderer* pRenderer)
     }
 }
 
+/***
+* METHOD
+*   loadImg
+*       pRenderer       -> canva of the window
+*       path            -> path of the picture on the folfer
+* 
+* load img on surface and create a texture ( less heavy )
+*/
 SDL_Texture* GameObject::LoadImg(SDL_Renderer* pRenderer, const char* path)
 {
     //On charge une Image (SDL_Surface)
@@ -53,6 +70,12 @@ SDL_Texture* GameObject::LoadImg(SDL_Renderer* pRenderer, const char* path)
     return pTexture;
 }
 
+/***
+* METHOD
+*   drawImg
+*       pRenderer       -> canva of the window
+*       _pTexture       -> texture of the picture
+*/
 void GameObject::DrawImg(SDL_Renderer* pRenderer, SDL_Texture* _pTexture)
 {
     SDL_Rect oPosition;
@@ -64,6 +87,10 @@ void GameObject::DrawImg(SDL_Renderer* pRenderer, SDL_Texture* _pTexture)
     SDL_RenderCopy(pRenderer, _pTexture, NULL, &oPosition);
 }
 
+/***
+* DESTRUCTOR
+*   GameObject
+*/
 GameObject::~GameObject()
 {
     if (pTexture != NULL)

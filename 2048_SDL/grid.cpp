@@ -20,6 +20,12 @@ void remove(std::vector<T>& v, size_t index) {
     v.erase(v.begin() + index);
 }
 
+/***
+* CONSTRUCTOR
+* 
+* initialize array and vector with empty boxes
+* first used in the game and second to know which box is empty to add a new value in game
+*/
 Grid::Grid()
 {
     i = 0;
@@ -44,27 +50,13 @@ Grid::Grid()
     }
 }
 
-//Grid::Grid(int _tab[4][4])
-//{
-//    i = 0;
-//    j = 0;
-//    k = 0;
-//    x = 0;
-//    y = 0;
-//    moved = false;
-//
-//    for (int m = 0; m < 4; m++)
-//    {
-//        for (int n = 0; n < 4; n++)
-//        {
-//            Box* box = new Box(_tab[m][n], m, n);
-//            tab[m][n] = box;
-//
-//            free_tab.push_back(box);
-//        }
-//    }
-//}
-
+/***
+* METHOD
+*   display      
+*       renderer of canva 
+* 
+* Draw tab on canva with the good picture
+*/
 void Grid::display(SDL_Renderer* pRenderer)
 {
     for (i = 0; i < 5; i++) {
@@ -80,37 +72,28 @@ void Grid::display(SDL_Renderer* pRenderer)
             }
         }
     }
-
-    for (i = 0; i < 5; i++) {
-
-        for (k = 0; k < 4; k++) {
-            cout << " ----";
-            if (k == 3)
-                cout << endl;
-        }
-
-        if (i < 4) {
-            for (j = 0; j < 4; j++) {
-
-
-
-                cout << "|  " << tab[i][j]->getValue() << " ";
-                if (j == 3)
-                    cout << "|" << endl;
-
-
-            }
-        }
-    }
-
 }
 
+/***
+* METHOD
+*   randomNum
+*       offset -> smallest number desired
+*       range -> int of numbers in the desired list of numbers
+* 
+* return random number with precise specificity
+*/
 int Grid::randomNum(int offset, int range) {
     int randNum = offset + (rand() % range);
     return randNum;
 }
 
 
+/***
+* METHOD
+*   addBox
+* 
+* Adds a value to a random box in the vector of empty boxes
+*/
 void Grid::addBox()
 {
     int randValue = randomNum(1, 2);
@@ -123,6 +106,13 @@ void Grid::addBox()
     remove(free_tab, randBox);
 }
 
+
+/***
+* METHOD
+*   debut
+* 
+* generate 2 random boxes (2;4) at the begging of the game
+*/
 void Grid::debut()
 {
     for (i = 0; i < 2; i++) {
@@ -130,6 +120,12 @@ void Grid::debut()
     }
 }
 
+/***
+* METHOD
+*   getDirection
+* 
+* used to get input player and add value to variables
+*/
 void Grid::getDirection()
 {
     int direction = directionnalArrowInput();
@@ -152,6 +148,13 @@ void Grid::getDirection()
     }
 }
 
+
+/***
+* METHOD
+*   movement
+* 
+* call specific method thanks to the input value
+*/
 void Grid::movement()
 {
     int direction[2];
@@ -180,11 +183,16 @@ void Grid::movement()
         }
 
     } while (moved == false);
-    //cout << direction[0] << endl << direction[1] << endl;
 
     clearTab();
 }
 
+/***
+* METHOD
+*   clearTab
+* 
+* clear and refill vector of empty boxes
+*/
 void Grid::clearTab()
 {
     free_tab.clear();
@@ -198,7 +206,10 @@ void Grid::clearTab()
     }
 }
 
-
+/***
+* METHOD
+*   moveUp
+*/
 bool Grid::moveUp() {
     moved = false;
 
@@ -232,6 +243,10 @@ bool Grid::moveUp() {
     return moved;
 }
 
+/***
+* METHOD
+*   moveDown
+*/
 bool Grid::moveDown() {
     moved = false;
 
@@ -265,6 +280,10 @@ bool Grid::moveDown() {
     return moved;
 }
 
+/***
+* METHOD
+*   moveLeft
+*/
 bool Grid::moveLeft() {
     moved = false;
 
@@ -298,6 +317,10 @@ bool Grid::moveLeft() {
     return moved;
 }
 
+/***
+* METHOD
+*   moveRight
+*/
 bool Grid::moveRight() {
     moved = false;
 
@@ -331,6 +354,12 @@ bool Grid::moveRight() {
     return moved;
 }
 
+/***
+* METHOD 
+*   canMove
+* 
+* Check if tab is full and any move is possible
+*/
 bool Grid::canMove() {
     if (free_tab.size() == 0) {
         for (i = 0; i < 3; i++) {
@@ -355,7 +384,10 @@ bool Grid::canMove() {
 }
 
 
-
+/***
+* METHOD
+*   restart
+*/
 bool Grid::restart() {
     cout << endl << endl << "RESTART ?" << endl << "YES (up)" << endl << "NO (down)";
     do {
@@ -368,10 +400,18 @@ bool Grid::restart() {
         return false;
 }
 
+/***
+* METHOD
+*   endGame
+*/
 void Grid::endGame() {
     cout << "Good job !!!";
 }
 
+/***
+* METHOD
+*   win
+*/
 void Grid::win() {
     cout << "YOU WIN !!!!" << endl << endl;
     restart();
@@ -379,7 +419,12 @@ void Grid::win() {
 
 
 
-//Test
+/***
+* METHOD
+*   compareTab
+* 
+* compare tab of integration tests
+*/
 /*bool Grid::compareTab(int end_tab[4][4]) {
 
     for (i = 0; i < 4; i++)

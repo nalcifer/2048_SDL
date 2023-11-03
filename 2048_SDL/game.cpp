@@ -6,11 +6,16 @@
 
 #include "grid.h"
 #include "window.h"
-
 #include "box.h"
 #include "input.h"
 #include "game.h"
 
+
+/***
+* METHOD
+*   gameLoop
+*       pWindow     -> window
+*/
 void gameLoop(Window* pWindow)
 {
 	bool is_finish = false;
@@ -51,12 +56,6 @@ void gameLoop(Window* pWindow)
         }
 
 	} while (is_finish == false);
-
-    std::cout << "finish";
-
-
-    //system("pause");
-
     delete pgrid;
 }
 
