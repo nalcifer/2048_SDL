@@ -410,42 +410,29 @@ bool Grid::restart() {
         return false;
 }
 
-/***
-* METHOD
-*   endGame
-*/
-void Grid::endGame() {
-    cout << "Good job !!!";
-}
 
 /***
 * METHOD
 *   win
 */
 void Grid::win() {
-    
+    cout << "You win" << endl;
     restart();
 }
 
-
+/***
+* METHOD
+*   lose
+*/
+void Grid::lose() {
+    cout << "You lose" << endl;
+    restart();
+}
 
 /***
 * METHOD
-*   compareTab
-* 
-* compare tab of integration tests
+*   endGame
 */
-/*bool Grid::compareTab(int end_tab[4][4]) {
-
-    for (i = 0; i < 4; i++)
-    {
-        for (j = 0; j < 4; j++)
-        {
-            if (tab[i][j]->getValue() != end_tab[i][i])
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}*/
+void Grid::endGame() {
+    cout << "Thanks for playing";
+}

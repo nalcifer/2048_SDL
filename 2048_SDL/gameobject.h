@@ -8,7 +8,7 @@ private :
 
 
 public :
-	const char* paths[14] = { "Free Box.bmp", "Fearless.bmp","Taylor Swift Debut.bmp", "Speak Now.bmp", "Red.bmp", "1989.bmp", "Reputation.bmp", "Lover.bmp", "Folklore.bmp","Evermore.bmp", "Midnights.bmp", "Christmas Tree.bmp", "win.bmp", "lose.bmp"};
+	const char* paths[11] = { "Free Box.bmp", "Taylor Swift Debut.bmp", "Fearless.bmp","Speak Now.bmp", "Red.bmp", "1989.bmp", "Reputation.bmp", "Lover.bmp", "Evermore.bmp", "Midnights.bmp", "Christmas Tree.bmp"};
 	std::vector<SDL_Texture*> albums;
 	 
 	SDL_Texture* win;

@@ -37,6 +37,7 @@ public:
 	bool restart();
 	void endGame();
 	void win();
+	void lose();
 
-	bool compareTab(int end_tab[4][4]);
+	//bool compareTab(int end_tab[4][4]);
 };

@@ -60,3 +60,7 @@ void gameLoop(Window* pWindow)
     delete pgrid;
 }
 
+
+
+// OPTIMISATION POSSIBLE -> REVOIR BOUCLE DE JEU ET WIN/LOSE
+
