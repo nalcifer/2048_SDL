@@ -15,9 +15,9 @@ public :
 	SDL_Texture* pTexture = NULL;
 	SDL_Surface* pSurface = NULL;
 
-	GameObject(int x, int y, int height, int width, SDL_Renderer* pRenderer);
+	GameObject(int _x, int _y, int _height, int _width, SDL_Renderer* pRenderer);
 	~GameObject();
-	//void draw(SDL_Renderer* pRenderer);
+
 	void LoadAllTexture(SDL_Renderer* pRenderer);
 	SDL_Texture* LoadImg(SDL_Renderer* pRenderer, const char* path);
 	void DrawImg(SDL_Renderer* pRenderer, SDL_Texture* _pTexture);

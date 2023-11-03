@@ -1,12 +1,11 @@
+#include <iostream>
+#include <SDL.h>
+
 #include "grid.h"
 #include "box.h"
 #include "input.h"
 #include "gameobject.h"
 #include "window.h"
-
-#include <iostream>
-#include <SDL.h>
-
 
 using namespace std;
 
@@ -67,7 +66,7 @@ void Grid::display(SDL_Renderer* pRenderer)
                     collisions = static_cast<int>(std::log2(tab[i][j]->getValue()));
                 else
                     collisions = 0;
-                GameObject* pGameObject = new GameObject(j * 175 ,i * 175, 150, 150, pRenderer);
+                GameObject* pGameObject = new GameObject(1280 /2 - 2 * 175 + j * 175 , 720 / 2 - 2 * 175 + i * 175, 150, 150, pRenderer);
                 pGameObject->DrawImg(pRenderer, pGameObject->albums[collisions]);
             }
         }
