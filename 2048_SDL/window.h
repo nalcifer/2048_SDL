@@ -7,9 +7,6 @@ public :
 	SDL_Window* pWindow = NULL;
 	SDL_Renderer* pRenderer = NULL;
 
-	int windowH;
-	int windowW;
-
 	Window();
 	void Update();
 	~Window();

@@ -27,16 +27,12 @@ Description directionnalArrowInput()
             switch (event.key.keysym.sym)
             {
             case SDLK_UP:
-                std::cout << "up";
                 return Up;
             case SDLK_DOWN:
-                std::cout << "down";
                 return Down;
             case SDLK_RIGHT:
-                std::cout << "right";
                 return Right;
             case SDLK_LEFT:
-                std::cout << "left";
                 return Left;
             }
             break;

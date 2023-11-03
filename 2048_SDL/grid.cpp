@@ -412,7 +412,7 @@ void Grid::endGame() {
 *   win
 */
 void Grid::win() {
-    cout << "YOU WIN !!!!" << endl << endl;
+    
     restart();
 }
 

@@ -37,9 +37,12 @@ GameObject::GameObject(int _x, int _y, int _height, int _width, SDL_Renderer* pR
 */
 void GameObject::LoadAllTexture(SDL_Renderer* pRenderer)
 {
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 12; i++) {
         albums.push_back(LoadImg(pRenderer, paths[i]));
     }
+    
+    win = LoadImg(pRenderer, paths[12]);
+    lose = LoadImg(pRenderer, paths[13]);
 }
 
 /***

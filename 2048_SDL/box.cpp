@@ -70,7 +70,7 @@ bool Box::getEmpty()
 /***
 * METHOD
 *	setEmpty
-*		_is_empty		-> change visibility of the box
+*		_is_empty	-> change visibility of the box
 */
 void Box::setEmpty(bool _is_empty)
 {
@@ -87,3 +87,4 @@ void Box::displayInformation()
 {
 	std::cout << "Case Valeur : " << value << std::endl << " De coordonnée : " << std::endl << "  x : " << coordinate[0] << std::endl << "  y : " << coordinate[1] << std::endl << "vide ? : " << is_empty;
 }
+

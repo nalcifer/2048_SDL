@@ -43,6 +43,7 @@ void gameLoop(Window* pWindow)
             {
                 delete pgrid;
 
+                Grid* pgrid = new Grid();
 
                 pgrid->debut();
 
